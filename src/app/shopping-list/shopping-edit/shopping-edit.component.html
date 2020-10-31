@@ -35,7 +35,7 @@
             type="submit"
             [disabled]="!f.valid"
           >
-            Add
+            {{ editMode ? "Update" : "Adds" }}
           </button>
           <button
             style="margin-right: 4px"
