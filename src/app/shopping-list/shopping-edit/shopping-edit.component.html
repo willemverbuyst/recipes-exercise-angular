@@ -38,9 +38,11 @@
             {{ editMode ? "Update" : "Adds" }}
           </button>
           <button
+            *ngIf="editMode"
             style="margin-right: 4px"
             class="btn btn-danger"
             type="button"
+            (click)="onDelete()"
           >
             Delete
           </button>
@@ -48,6 +50,7 @@
             style="margin-right: 4px"
             class="btn btn-primary"
             type="button"
+            (click)="onClear()"
           >
             Clear
           </button>
