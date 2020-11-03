@@ -7,23 +7,28 @@ import { Recipe } from './recipe.model';
 @Injectable()
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
-
-  private recipes: Recipe[] = [
-    new Recipe(
-      'Egg curry',
-      'This is simply a test for eggs',
-      'https://www.indianhealthyrecipes.com/wp-content/uploads/2012/11/egg-curry-recipe.jpg',
-      [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
-    ),
-    new Recipe(
-      'A test Recipe',
-      'This is simply a test',
-      'https://www.indianhealthyrecipes.com/wp-content/uploads/2012/11/egg-curry-recipe.jpg',
-      [new Ingredient('Curry', 1), new Ingredient('Eggs', 20)]
-    ),
-  ];
+  private recipes: Recipe[] = [];
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'Egg curry',
+  //     'This is simply a test for eggs',
+  //     'https://www.indianhealthyrecipes.com/wp-content/uploads/2012/11/egg-curry-recipe.jpg',
+  //     [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
+  //   ),
+  //   new Recipe(
+  //     'A test Recipe',
+  //     'This is simply a test',
+  //     'https://www.indianhealthyrecipes.com/wp-content/uploads/2012/11/egg-curry-recipe.jpg',
+  //     [new Ingredient('Curry', 1), new Ingredient('Eggs', 20)]
+  //   ),
+  // ];
 
   constructor(private slService: ShoppingListService) {}
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
