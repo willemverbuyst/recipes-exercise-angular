@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  fbApiKey: process.env.API_KEY,
 };
